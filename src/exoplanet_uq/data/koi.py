@@ -17,7 +17,7 @@ import requests
 TAP_URL = "https://exoplanetarchive.ipac.caltech.edu/TAP/sync"
 KOI_TABLE = "cumulative"
 
-# The columns we ask NASA 
+# The columns we ask NASA for.
 KOI_COLUMNS: tuple[str, ...] = (
     "kepid",  # star ID
     "kepoi_name",  # signal ID (one star can have several)
@@ -38,7 +38,7 @@ KOI_COLUMNS: tuple[str, ...] = (
 KNOWN_DISPOSITIONS = frozenset({"CONFIRMED", "FALSE POSITIVE", "CANDIDATE", "NOT DISPOSITIONED"})
 
 # Our label rules. CANDIDATE and NOT DISPOSITIONED are left out on
-# purpose: nobody knows their true answer yet (see Lesson 2, section 2.2).
+# purpose: nobody knows their true answer yet.
 LABEL_MAP: dict[str, int] = {"CONFIRMED": 1, "FALSE POSITIVE": 0}
 
 # Without these three values we cannot fold the light curve or mask the
