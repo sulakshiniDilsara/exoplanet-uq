@@ -28,6 +28,9 @@ ruff check .
 | Step | Script | Output |
 |---|---|---|
 | 1. Download the KOI catalogue and assign labels | `python scripts/01_download_koi.py` | `metadata/koi_*.csv`, `metadata/koi_download_info.json` |
+| 2. Pick the pilot stars (150, seed 42) and download their Kepler long cadence light curves | `python scripts/02_download_lightcurves.py` | `data/raw/kepler/<kepid>/*.fits`, `metadata/lightcurve_manifest.csv`, `metadata/lightcurve_download_info.json` |
+
+Step 2 can be stopped and run again: stars that are already complete are skipped.
 
 ## Folders
 

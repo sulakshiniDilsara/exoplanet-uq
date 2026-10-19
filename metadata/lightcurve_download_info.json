@@ -1,0 +1,15 @@
+{
+  "source": "https://archive.stsci.edu/missions/kepler/lightcurves",
+  "files": "Kepler mission pipeline, long cadence (*_llc.fits)",
+  "seed": 42,
+  "stars_available": 6641,
+  "stars_picked": 150,
+  "stars_with_planet": 45,
+  "status_counts": {
+    "ok": 150
+  },
+  "files_total": 2397,
+  "size_mb": 1035.0,
+  "started_at_utc": "2026-10-19T17:25:42+00:00",
+  "finished_at_utc": "2026-10-19T17:27:55+00:00"
+}
