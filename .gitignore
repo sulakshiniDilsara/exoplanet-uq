@@ -1,0 +1,27 @@
+# Python environment and caches (rebuilt from pyproject.toml, never saved)
+.venv/
+__pycache__/
+*.pyc
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+
+# Downloaded and processed data. These files are large and can be
+# downloaded again, so we keep them out of git.
+# The leading "/" means only the top-level data folder, not src/.../data.
+/data/
+*.fits
+
+# Jupyter auto-save files
+.ipynb_checkpoints/
+
+# Docs is private: learning notes, lessons and group proposal documents
+# (which contain other members' names and student IDs). It must never be
+# committed or pushed.
+/Docs/
+
+# Word lock files
+~$*
+
+# Secrets, if we ever need any. Never commit these.
+.env

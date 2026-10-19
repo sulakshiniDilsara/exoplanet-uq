@@ -1,0 +1,40 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "exoplanet-uq"
+version = "0.1.0"
+description = "Bayesian uncertainty quantification for exoplanet transit detection (SLIIT J26-IT-449)"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "numpy>=1.26",
+    "pandas>=2.1",
+    "matplotlib>=3.8",
+    "requests>=2.31",
+    "astropy>=6.0",
+    "lightkurve>=2.4",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "ruff>=0.5",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+# Lesson notes contain code sketches laid out for teaching, not project code.
+extend-exclude = ["Docs"]
+
+[tool.ruff.lint]
+# E/F: basic errors, I: import order, B: common bugs, UP: modern Python style
+select = ["E", "F", "I", "B", "UP"]
