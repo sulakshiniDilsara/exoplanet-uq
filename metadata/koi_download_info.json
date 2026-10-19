@@ -1,0 +1,12 @@
+{
+  "source": "https://exoplanetarchive.ipac.caltech.edu/TAP/sync",
+  "table": "cumulative",
+  "query": "select kepid, kepoi_name, koi_disposition, koi_period, koi_time0bk, koi_duration, koi_depth, koi_model_snr, koi_fpflag_nt, koi_fpflag_ss, koi_fpflag_co, koi_fpflag_ec from cumulative",
+  "downloaded_at_utc": "2026-10-17T12:24:13+00:00",
+  "rows_total": 9564,
+  "rows_labelled": 7587,
+  "rows_excluded": 1977,
+  "planets_label_1": 2748,
+  "false_positives_label_0": 4839,
+  "unique_stars_labelled": 6641
+}
