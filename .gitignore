@@ -9,8 +9,19 @@ __pycache__/
 # Downloaded and processed data. These files are large and can be
 # downloaded again, so we keep them out of git.
 # The leading "/" means only the top-level data folder, not src/.../data.
-/data/
+# "/data/*" (not "/data/") lets us re-include single files below.
+/data/*
 *.fits
+
+# Exceptions: the two small files that define the pilot results (2.3 MB).
+# They let a second laptop run scripts 05-08 without re-downloading 1 GB,
+# and they record exactly which views and model PP1 used.
+!/data/processed/
+/data/processed/*
+!/data/processed/views.npz
+!/data/models/
+/data/models/*
+!/data/models/cnn_pilot.pt
 
 # Jupyter auto-save files
 .ipynb_checkpoints/
