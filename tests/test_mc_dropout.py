@@ -157,3 +157,10 @@ def test_spearman_known_values():
     assert mc_dropout.spearman([1, 2, 3, 4], [10, 20, 30, 40]) == pytest.approx(1.0)
     assert mc_dropout.spearman([1, 2, 3, 4], [40, 30, 20, 10]) == pytest.approx(-1.0)
     assert mc_dropout.spearman([1, 2, 3, 4], [1, 4, 9, 100]) == pytest.approx(1.0)  # order only
+
+
+def test_logits_option_gives_the_same_runs_before_sigmoid():
+    model, data = fresh_model(), fake_data()
+    probs = mc_dropout.mc_predict(model, data, n_runs=5, seed=3)
+    logits = mc_dropout.mc_predict(model, data, n_runs=5, seed=3, as_logits=True)
+    np.testing.assert_allclose(torch.sigmoid(torch.from_numpy(logits)).numpy(), probs, rtol=1e-6)

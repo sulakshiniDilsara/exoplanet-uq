@@ -55,8 +55,17 @@ def enable_mc_dropout(model: nn.Module) -> int:
     return switched
 
 
-def mc_predict(model: nn.Module, data: SplitData, n_runs: int, seed: int = MC_SEED) -> np.ndarray:
-    """Planet probabilities from n_runs dropout-ON runs. Shape: (n_runs, n_signals)."""
+def mc_predict(
+    model: nn.Module,
+    data: SplitData,
+    n_runs: int,
+    seed: int = MC_SEED,
+    as_logits: bool = False,
+) -> np.ndarray:
+    """Planet probabilities (or logits) from n_runs dropout-ON runs. Shape: (n_runs, n_signals).
+
+    as_logits=True returns the raw outputs, for temperature scaling (Step 7).
+    """
     if n_runs < 2:
         raise ValueError("MC Dropout needs at least 2 runs to measure a spread.")
     global_view, local_view, _ = as_tensors(data)
@@ -65,10 +74,11 @@ def mc_predict(model: nn.Module, data: SplitData, n_runs: int, seed: int = MC_SE
         if enable_mc_dropout(model) == 0:
             raise ValueError("The model has no dropout layer, so MC Dropout cannot work.")
         with torch.no_grad():
-            runs = [torch.sigmoid(model(global_view, local_view)) for _ in range(n_runs)]
+            runs = [model(global_view, local_view) for _ in range(n_runs)]
     finally:
         model.eval()  # always leave the model in normal prediction mode
-    return torch.stack(runs).numpy()
+    logits = torch.stack(runs)
+    return logits.numpy() if as_logits else torch.sigmoid(logits).numpy()
 
 
 def binary_entropy(p: np.ndarray) -> np.ndarray:

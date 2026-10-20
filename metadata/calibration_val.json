@@ -1,0 +1,89 @@
+{
+  "split": "val",
+  "signals": 31,
+  "wrong_predictions_single": 0,
+  "n_bins": 10,
+  "mc_runs": 100,
+  "temperature_fit": {
+    "best_temperature": 0.0595,
+    "trustworthy": false,
+    "reason": "no wrong predictions: the temperature cannot be estimated from this set",
+    "wrong_predictions_mc": 0,
+    "grid": [
+      0.05,
+      20.0
+    ],
+    "nll_at_T1": 0.0106,
+    "note": "temperature NOT used; version C is not reported for this set"
+  },
+  "results": {
+    "A_single": {
+      "accuracy": 1.0,
+      "roc_auc": 1.0,
+      "ece": 0.0072,
+      "ece_bootstrap_95": [
+        0.0005,
+        0.0199
+      ],
+      "brier": 0.0012,
+      "nll": 0.0079,
+      "reliability": [
+        {
+          "low": 0.0,
+          "high": 0.1,
+          "count": 15,
+          "mean_predicted": 0.00032267060886794727,
+          "fraction_planets": 0.0
+        },
+        {
+          "low": 0.1,
+          "high": 0.2,
+          "count": 1,
+          "mean_predicted": 0.1927121054237494,
+          "fraction_planets": 0.0
+        },
+        {
+          "low": 0.9,
+          "high": 1.0,
+          "count": 15,
+          "mean_predicted": 0.9982923415993606,
+          "fraction_planets": 1.0
+        }
+      ]
+    },
+    "B_mc_mean": {
+      "accuracy": 1.0,
+      "roc_auc": 1.0,
+      "ece": 0.0096,
+      "ece_bootstrap_95": [
+        0.0014,
+        0.0247
+      ],
+      "brier": 0.0017,
+      "nll": 0.0106,
+      "reliability": [
+        {
+          "low": 0.0,
+          "high": 0.1,
+          "count": 15,
+          "mean_predicted": 0.0009804070045682505,
+          "fraction_planets": 0.0
+        },
+        {
+          "low": 0.2,
+          "high": 0.3,
+          "count": 1,
+          "mean_predicted": 0.22524160565580942,
+          "fraction_planets": 0.0
+        },
+        {
+          "low": 0.9,
+          "high": 1.0,
+          "count": 15,
+          "mean_predicted": 0.996096853114232,
+          "fraction_planets": 1.0
+        }
+      ]
+    }
+  }
+}

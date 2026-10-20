@@ -116,12 +116,21 @@ def train_model(
     return TrainResult(history, best_epoch, best_val_loss)
 
 
-def predict_proba(model: nn.Module, data: SplitData) -> np.ndarray:
-    """Planet probability for every signal, with dropout OFF (one normal prediction)."""
+def predict_logits(model: nn.Module, data: SplitData) -> np.ndarray:
+    """The raw model output (logit) for every signal, with dropout OFF.
+
+    Temperature scaling needs logits: going back from a probability like
+    0.9999999 to a logit loses precision.
+    """
     model.eval()
     global_view, local_view, _ = as_tensors(data)
     with torch.no_grad():
-        return torch.sigmoid(model(global_view, local_view)).numpy()
+        return model(global_view, local_view).numpy()
+
+
+def predict_proba(model: nn.Module, data: SplitData) -> np.ndarray:
+    """Planet probability for every signal, with dropout OFF (one normal prediction)."""
+    return torch.sigmoid(torch.from_numpy(predict_logits(model, data))).numpy()
 
 
 def accuracy(labels: np.ndarray, probabilities: np.ndarray, threshold: float = 0.5) -> float:
