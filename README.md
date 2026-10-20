@@ -39,6 +39,7 @@ ruff check .
 | 5. Train the two-branch 1D-CNN (global + local view) on train, early stopping on val | `python scripts/05_train.py` | `data/models/cnn_pilot.pt`, `data/models/loss_curve.png`, `metadata/train_history.csv`, `metadata/train_info.json` |
 | 6. MC Dropout on val: pick T (smallest of 10/20/50/100 within 0.01 of T = 1000), save mean, std and entropies per signal | `python scripts/06_mc_dropout.py` | `metadata/mc_val_predictions.csv`, `metadata/mc_info.json`, `data/models/mc_*.png` |
 | 7. Calibration on val: reliability diagram, ECE (10 bins, bootstrap range), Brier, NLL; temperature scaling only if it can be fitted honestly | `python scripts/07_calibration.py` | `metadata/calibration_val.json`, `data/models/reliability_val.png` |
+| 8. Classification scores (accuracy, precision, recall, F1, ROC-AUC, confusion matrix), follow-up ranking by uncertainty, correct-vs-wrong uncertainty (val) | `python scripts/08_evaluate.py` | `metadata/evaluation_val.json`, `metadata/follow_up_val.csv`, `data/models/confusion_val.png` |
 
 Step 2 can be stopped and run again: stars that are already complete are skipped.
 Step 3 needs no internet and never uses the labels, so planets and false positives are cleaned the same way.

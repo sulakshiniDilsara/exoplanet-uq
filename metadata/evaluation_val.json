@@ -1,0 +1,70 @@
+{
+  "split": "val",
+  "signals": 31,
+  "source": "metadata/mc_val_predictions.csv (Step 6)",
+  "scores": {
+    "A_single": {
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "roc_auc": 1.0,
+      "confusion_matrix": {
+        "tp": 15,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16
+      },
+      "threshold": 0.5
+    },
+    "B_mc_mean": {
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "roc_auc": 1.0,
+      "confusion_matrix": {
+        "tp": 15,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16
+      },
+      "threshold": 0.5
+    }
+  },
+  "uncertainty_by_correctness": {
+    "mc_std": {
+      "correct": {
+        "count": 31,
+        "mean": 0.008917688800397817,
+        "median": 0.0019634377042575
+      },
+      "wrong": {
+        "count": 0,
+        "mean": null,
+        "median": null
+      },
+      "comparison_possible": false
+    },
+    "total_entropy": {
+      "correct": {
+        "count": 31,
+        "mean": 0.031737542888991534,
+        "median": 0.0085820054540725
+      },
+      "wrong": {
+        "count": 0,
+        "mean": null,
+        "median": null
+      },
+      "comparison_possible": false
+    }
+  },
+  "follow_up_top5": [
+    "K00190.01",
+    "K00707.05",
+    "K00413.02",
+    "K04280.01",
+    "K02674.01"
+  ]
+}
