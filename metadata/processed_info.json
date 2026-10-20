@@ -1,0 +1,19 @@
+{
+  "global_bins": 2001,
+  "local_bins": 201,
+  "local_width_durations": 4.0,
+  "local_bin_width_durations": 0.16,
+  "mask_width_factor": 1.5,
+  "flatten_duration_factor": 3.0,
+  "flatten_min_days": 2.0,
+  "cosmic_ray_sigma": 4.0,
+  "min_transits": 2,
+  "max_empty_fraction": 0.1,
+  "stars": 150,
+  "signals": 183,
+  "kept": 181,
+  "kept_planets": 76,
+  "excluded": 2,
+  "started_at_utc": "2026-10-20T01:18:58+00:00",
+  "finished_at_utc": "2026-10-20T01:32:08+00:00"
+}
