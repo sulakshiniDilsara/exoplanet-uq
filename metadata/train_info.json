@@ -1,0 +1,27 @@
+{
+  "model": "TwoBranchCNN",
+  "parameters": 167361,
+  "dropout_rate": 0.3,
+  "kernel_size": 5,
+  "pool_size": 4,
+  "hidden_units": 64,
+  "learning_rate": 0.001,
+  "batch_size": 32,
+  "max_epochs": 200,
+  "patience": 20,
+  "seed": 42,
+  "pos_weight": 1.5102,
+  "train_signals": 123,
+  "val_signals": 31,
+  "epochs_run": 129,
+  "best_epoch": 109,
+  "train_seconds": 14.7,
+  "torch_version": "2.14.1+cpu",
+  "scores": {
+    "val_loss": 0.0083,
+    "val_accuracy": 1.0,
+    "val_roc_auc": 1.0,
+    "train_accuracy": 1.0,
+    "train_roc_auc": 1.0
+  }
+}

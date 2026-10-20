@@ -13,8 +13,12 @@ Brier score, NLL, temperature scaling).
 ```bash
 python -m venv .venv
 .venv\Scripts\activate          # Windows
-pip install -e ".[dev]"
+pip install -r requirements-lock.txt   # exact versions, CPU-only PyTorch
+pip install -e . --no-deps
 ```
+
+The lock file points pip to PyTorch's CPU package index, so it installs the
+small CPU-only build of PyTorch (no GPU is needed for this project).
 
 ## Run the tests
 
@@ -32,6 +36,7 @@ ruff check .
 
 | 3. Clean each light curve (quality flags, quarter normalising, upward outliers, masked flatten) and make a global (2001 bins) and local (201 bins) view per signal | `python scripts/03_make_views.py` | `data/processed/views.npz`, `data/processed/plots/`, `metadata/processed_signals.csv`, `metadata/processed_info.json` |
 | 4. Split the kept signals into train / val / test (70 / 15 / 15) by star, stratified by planet, seed 42 | `python scripts/04_split.py` | `metadata/split.csv`, `metadata/split_info.json` |
+| 5. Train the two-branch 1D-CNN (global + local view) on train, early stopping on val | `python scripts/05_train.py` | `data/models/cnn_pilot.pt`, `data/models/loss_curve.png`, `metadata/train_history.csv`, `metadata/train_info.json` |
 
 Step 2 can be stopped and run again: stars that are already complete are skipped.
 Step 3 needs no internet and never uses the labels, so planets and false positives are cleaned the same way.

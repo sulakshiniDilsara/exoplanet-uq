@@ -1,4 +1,6 @@
 # Exact versions used in this project. Rebuild with: pip install -r requirements-lock.txt
+# torch is the CPU-only build, so pip also needs PyTorch's own package index:
+--extra-index-url https://download.pytorch.org/whl/cpu
 aiobotocore==3.9.2
 aiohappyeyeballs==2.7.1
 aiohttp==3.14.5
@@ -19,6 +21,7 @@ colorama==0.4.6
 contourpy==1.3.3
 cycler==0.12.1
 fbpca==1.0
+filelock==3.32.3
 fonttools==4.67.0
 frozenlist==1.8.0
 fsspec==2026.9.0
@@ -39,8 +42,10 @@ MarkupSafe==3.0.4
 matplotlib==3.11.2
 memoization==0.4.0
 more-itertools==11.2.1
+mpmath==1.3.0
 multidict==6.9.1
 narwhals==2.27.1
+networkx==3.6.1
 numpy==2.4.6
 packaging==26.3
 pandas==2.3.3
@@ -64,7 +69,9 @@ scikit-learn==1.9.1
 scipy==1.17.1
 six==1.17.0
 soupsieve==2.10
+sympy==1.14.0
 threadpoolctl==3.7.0
+torch==2.14.1+cpu
 tornado==6.5.10
 tqdm==4.70.1
 typing_extensions==4.16.0
