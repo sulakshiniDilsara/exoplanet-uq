@@ -64,7 +64,7 @@ def mean_loss(model: nn.Module, data: SplitData, loss_fn: nn.Module) -> float:
     model.eval()
     global_view, local_view, labels = as_tensors(data)
     with torch.no_grad():
-        return float(loss_fn(model(global_view, local_view), labels))
+        return loss_fn(model(global_view, local_view), labels).item()
 
 
 def train_model(
@@ -101,7 +101,7 @@ def train_model(
             loss = loss_fn(model(global_view[batch], local_view[batch]), labels[batch])
             loss.backward()  # work out which way to turn each knob
             optimizer.step()  # turn the knobs a little
-            total += float(loss) * len(batch)
+            total += loss.item() * len(batch)  # .item(): a plain number, no gradient link
 
         val_loss = mean_loss(model, val, loss_fn)
         history.append({"epoch": epoch, "train_loss": total / len(train), "val_loss": val_loss})
