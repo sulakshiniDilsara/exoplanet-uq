@@ -31,9 +31,11 @@ ruff check .
 | 2. Pick the pilot stars (150, seed 42) and download their Kepler long cadence light curves | `python scripts/02_download_lightcurves.py` | `data/raw/kepler/<kepid>/*.fits`, `metadata/lightcurve_manifest.csv`, `metadata/lightcurve_download_info.json` |
 
 | 3. Clean each light curve (quality flags, quarter normalising, upward outliers, masked flatten) and make a global (2001 bins) and local (201 bins) view per signal | `python scripts/03_make_views.py` | `data/processed/views.npz`, `data/processed/plots/`, `metadata/processed_signals.csv`, `metadata/processed_info.json` |
+| 4. Split the kept signals into train / val / test (70 / 15 / 15) by star, stratified by planet, seed 42 | `python scripts/04_split.py` | `metadata/split.csv`, `metadata/split_info.json` |
 
 Step 2 can be stopped and run again: stars that are already complete are skipped.
 Step 3 needs no internet and never uses the labels, so planets and false positives are cleaned the same way.
+Step 4 splits stars, not signals, so no star is in two sets (no data leakage). Model work uses only train and val; the test set is opened once, at the end.
 
 ## Folders
 

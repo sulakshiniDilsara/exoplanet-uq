@@ -1,0 +1,26 @@
+{
+  "seed": 42,
+  "val_fraction": 0.15,
+  "test_fraction": 0.15,
+  "split_by": "kepid (star), stratified by has_planet",
+  "counts": {
+    "train": {
+      "stars": 104,
+      "signals": 123,
+      "planets": 49,
+      "planet_share": 0.398
+    },
+    "val": {
+      "stars": 22,
+      "signals": 31,
+      "planets": 15,
+      "planet_share": 0.484
+    },
+    "test": {
+      "stars": 22,
+      "signals": 27,
+      "planets": 12,
+      "planet_share": 0.444
+    }
+  }
+}
