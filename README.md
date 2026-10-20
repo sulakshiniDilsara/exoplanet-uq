@@ -37,6 +37,7 @@ ruff check .
 | 3. Clean each light curve (quality flags, quarter normalising, upward outliers, masked flatten) and make a global (2001 bins) and local (201 bins) view per signal | `python scripts/03_make_views.py` | `data/processed/views.npz`, `data/processed/plots/`, `metadata/processed_signals.csv`, `metadata/processed_info.json` |
 | 4. Split the kept signals into train / val / test (70 / 15 / 15) by star, stratified by planet, seed 42 | `python scripts/04_split.py` | `metadata/split.csv`, `metadata/split_info.json` |
 | 5. Train the two-branch 1D-CNN (global + local view) on train, early stopping on val | `python scripts/05_train.py` | `data/models/cnn_pilot.pt`, `data/models/loss_curve.png`, `metadata/train_history.csv`, `metadata/train_info.json` |
+| 6. MC Dropout on val: pick T (smallest of 10/20/50/100 within 0.01 of T = 1000), save mean, std and entropies per signal | `python scripts/06_mc_dropout.py` | `metadata/mc_val_predictions.csv`, `metadata/mc_info.json`, `data/models/mc_*.png` |
 
 Step 2 can be stopped and run again: stars that are already complete are skipped.
 Step 3 needs no internet and never uses the labels, so planets and false positives are cleaned the same way.

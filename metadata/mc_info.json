@@ -1,0 +1,48 @@
+{
+  "reference_runs": 1000,
+  "candidate_runs": [
+    10,
+    20,
+    50,
+    100
+  ],
+  "tolerance": 0.01,
+  "seed": 42,
+  "chosen_runs": 100,
+  "converged": true,
+  "convergence": [
+    {
+      "n_runs": 10,
+      "max_mean_diff": 0.03377208670601248,
+      "max_std_diff": 0.024017440336908016
+    },
+    {
+      "n_runs": 20,
+      "max_mean_diff": 0.010044073294848188,
+      "max_std_diff": 0.024110657537430122
+    },
+    {
+      "n_runs": 50,
+      "max_mean_diff": 0.01788192333653571,
+      "max_std_diff": 0.012349544554697231
+    },
+    {
+      "n_runs": 100,
+      "max_mean_diff": 0.009809685777872806,
+      "max_std_diff": 0.006600224056405013
+    }
+  ],
+  "dropout_rate": 0.3,
+  "decomposition_note": "aleatoric/epistemic split is an approximation (Depeweg et al., 2018)",
+  "checks": {
+    "val_signals": 31,
+    "wrong_predictions": 0,
+    "max_abs_mc_minus_single": 0.0325,
+    "mc_std_median": 0.00196,
+    "mc_std_max": 0.1312,
+    "spearman_entropy_vs_snr": 0.125,
+    "spearman_entropy_vs_depth": 0.017,
+    "fp_mean_entropy_ss_flag_1": 0.08307,
+    "fp_mean_entropy_ss_flag_0": 0.00528
+  }
+}
