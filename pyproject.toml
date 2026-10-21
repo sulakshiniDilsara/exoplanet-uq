@@ -7,7 +7,8 @@ name = "exoplanet-uq"
 version = "0.1.0"
 description = "Bayesian uncertainty quantification for exoplanet transit detection (SLIIT J26-IT-449)"
 readme = "README.md"
-requires-python = ">=3.10"
+# Streamlit (the dashboard) needs Python 3.11 or newer.
+requires-python = ">=3.11"
 dependencies = [
     "numpy>=1.26",
     "pandas>=2.1",
@@ -17,6 +18,8 @@ dependencies = [
     "lightkurve>=2.4",
     # The CPU-only build is enough for this project; see README "Set up".
     "torch>=2.14",
+    # The research dashboard in app/ (Step 9).
+    "streamlit>=1.65",
 ]
 
 [project.optional-dependencies]
@@ -33,7 +36,7 @@ testpaths = ["tests"]
 
 [tool.ruff]
 line-length = 100
-target-version = "py310"
+target-version = "py311"
 # Lesson notes contain code sketches laid out for teaching, not project code.
 extend-exclude = ["Docs"]
 

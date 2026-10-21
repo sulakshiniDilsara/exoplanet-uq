@@ -15,7 +15,7 @@ Outputs:
 
 import argparse
 import json
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 
 import pandas as pd
 
@@ -38,7 +38,7 @@ def folder_size_mb(folder) -> float:
 
 def main() -> None:
     args = parse_args()
-    started_at = datetime.now(timezone.utc).isoformat(timespec="seconds")
+    started_at = datetime.now(UTC).isoformat(timespec="seconds")
 
     labelled = pd.read_csv(METADATA_DIR / "koi_labelled.csv")
     stars = lc.star_table(labelled)
@@ -79,7 +79,7 @@ def main() -> None:
         "files_total": int(manifest["n_files"].sum()),
         "size_mb": folder_size_mb(KEPLER_RAW_DIR),
         "started_at_utc": started_at,
-        "finished_at_utc": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+        "finished_at_utc": datetime.now(UTC).isoformat(timespec="seconds"),
     }
     (METADATA_DIR / "lightcurve_download_info.json").write_text(
         json.dumps(info, indent=2) + "\n", encoding="utf-8"

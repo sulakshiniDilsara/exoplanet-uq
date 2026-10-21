@@ -15,7 +15,7 @@ Outputs:
 
 import argparse
 import json
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 
 import matplotlib
 
@@ -72,7 +72,7 @@ def plot_signal(path, name, label, raw, flat, mask, views, signal) -> None:
 
 def main() -> None:
     args = parse_args()
-    started_at = datetime.now(timezone.utc).isoformat(timespec="seconds")
+    started_at = datetime.now(UTC).isoformat(timespec="seconds")
 
     manifest = pd.read_csv(METADATA_DIR / "lightcurve_manifest.csv")
     labelled = pd.read_csv(METADATA_DIR / "koi_labelled.csv")
@@ -159,7 +159,7 @@ def main() -> None:
         "kept_planets": int(kept["label"].sum()),
         "excluded": int((table["status"] == pp.STATUS_EXCLUDED).sum()),
         "started_at_utc": started_at,
-        "finished_at_utc": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+        "finished_at_utc": datetime.now(UTC).isoformat(timespec="seconds"),
     }
     (METADATA_DIR / "processed_info.json").write_text(
         json.dumps(info, indent=2) + "\n", encoding="utf-8"

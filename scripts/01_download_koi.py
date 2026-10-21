@@ -11,7 +11,7 @@ Outputs (all in metadata/):
 """
 
 import json
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 
 from exoplanet_uq.config import METADATA_DIR
 from exoplanet_uq.data import koi
@@ -22,7 +22,7 @@ def main() -> None:
 
     print("Downloading the KOI table from the NASA Exoplanet Archive ...")
     text = koi.download_koi_csv()
-    downloaded_at = datetime.now(timezone.utc).isoformat(timespec="seconds")
+    downloaded_at = datetime.now(UTC).isoformat(timespec="seconds")
 
     table = koi.parse_koi_csv(text)
     koi.validate_koi_table(table)

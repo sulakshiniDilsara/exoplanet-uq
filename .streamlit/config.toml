@@ -1,0 +1,30 @@
+# Settings for the research dashboard (streamlit run app/dashboard.py).
+# Run Streamlit from the project root, so it finds this file.
+
+[server]
+# Only this computer can open the dashboard; it is never on the network.
+address = "127.0.0.1"
+port = 8501
+# No file uploads are used, so keep uploads as small as possible.
+maxUploadSize = 1
+
+[browser]
+# Do not send usage statistics to Streamlit.
+gatherUsageStats = false
+serverAddress = "localhost"
+
+[client]
+# Hide the "Deploy" button: this is a local research demo.
+toolbarMode = "minimal"
+
+[theme]
+# Dark theme with the amber of the PP1 slides.
+base = "dark"
+primaryColor = "#E8A33D"
+backgroundColor = "#0E1117"
+secondaryBackgroundColor = "#262730"
+textColor = "#FAFAFA"
+
+[theme.sidebar]
+backgroundColor = "#262730"
+textColor = "#FAFAFA"

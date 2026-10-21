@@ -45,6 +45,27 @@ Step 2 can be stopped and run again: stars that are already complete are skipped
 Step 3 needs no internet and never uses the labels, so planets and false positives are cleaned the same way.
 Step 4 splits stars, not signals, so no star is in two sets (no data leakage). Model work uses only train and val; the test set is opened once, at the end.
 
+## Research dashboard (Step 9)
+
+A local web page that shows the model and the saved results. Run it **from the project root**, so Streamlit finds `.streamlit/config.toml`:
+
+```bash
+streamlit run app/dashboard.py
+```
+
+Then open http://localhost:8501. It needs no internet and no new data: it uses the committed model (`data/models/cnn_pilot.pt`), views (`data/processed/views.npz`) and `metadata/` files.
+
+| Page | What it shows |
+|---|---|
+| Overview | Key numbers, workflow, current status |
+| Signal Explorer | Pick a train or val signal; the model runs live with MC Dropout (T from Step 6) and shows its answer, its uncertainty and the light-curve views |
+| Uncertainty | Answer vs spread for the val set, how T was chosen, aleatoric / epistemic parts |
+| Follow-up List | Val signals ranked by uncertainty (downloadable CSV) |
+| Calibration | ECE, Brier, NLL, reliability diagram, and why temperature scaling was refused |
+| Research Evidence | Loss curve, scores, confusion matrix, data split, limitations |
+
+Safety: the page listens on 127.0.0.1 only, has no file upload, sends no usage statistics, and cannot load the test set (`models/inference.py` refuses it). Live val numbers equal the saved Step 6 table (checked by `tests/test_inference.py`).
+
 ## Folders
 
 | Folder | What is inside | In git? |
@@ -52,6 +73,7 @@ Step 4 splits stars, not signals, so no star is in two sets (no data leakage). M
 | `src/exoplanet_uq/` | Reusable project code | Yes |
 | `tests/` | Automatic checks for the code | Yes |
 | `scripts/` | Pipeline steps you run by hand | Yes |
+| `app/` | The research dashboard (web page only) | Yes |
 | `metadata/` | Small tables: catalogue, labels, splits | Yes |
 | `data/` | Downloaded and processed light curves | No (too big) |
 | `Docs/` | Private learning notes and documents | No (private) |
